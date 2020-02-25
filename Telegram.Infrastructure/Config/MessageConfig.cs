@@ -19,9 +19,9 @@ namespace Telegram.Infrastructure.Config
                 .IsRequired()
                 .HasColumnType("nvarchar(20)");
 
-            x.HasOne(x => x.User)
+            x.HasOne(x => x.Conversation)
                 .WithMany(x => x.Messages)
-                .HasForeignKey(x => x.UserId);
+                .HasForeignKey(x => x.ConversationId);
         }
     }
 }
