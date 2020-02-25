@@ -14,7 +14,7 @@ namespace Telegram.Infrastructure.Config
             x.HasKey(x => x.Id);
             x.Property(x => x.ConvName)
                 .IsRequired()
-                .HasColumnType("nvarchar");
+                .HasColumnType("nvarchar(20)");
             x.Property(x => x.CreateDate)
                 .IsRequired()
                 .HasColumnType("datetime");

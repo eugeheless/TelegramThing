@@ -17,7 +17,11 @@ namespace Telegram.Infrastructure.Config
                 .HasColumnType("datetime");
             x.Property(x => x.Text)
                 .IsRequired()
-                .HasColumnType("nvarchar");
+                .HasColumnType("nvarchar(20)");
+
+            x.HasOne(x => x.User)
+                .WithMany(x => x.Messages)
+                .HasForeignKey(x => x.UserId);
         }
     }
 }

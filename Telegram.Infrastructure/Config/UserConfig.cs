@@ -14,13 +14,13 @@ namespace Telegram.Infrastructure.Config
             x.HasKey(x => x.Id);
             x.Property(x => x.Name)
                 .IsRequired()
-                .HasColumnType("nvarchar");
+                .HasColumnType("nvarchar(20)");
             x.Property(x => x.Login)
                 .IsRequired()
-                .HasColumnType("nvarchar");
+                .HasColumnType("nvarchar(20)");
             x.Property(x => x.Password)
                 .IsRequired()
-                .HasColumnType("nvarchar");
+                .HasColumnType("nvarchar(20)");
         }
 
     }

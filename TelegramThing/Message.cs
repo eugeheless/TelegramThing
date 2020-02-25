@@ -10,10 +10,20 @@ namespace Telegram.Domain
         public DateTime SendTime { get; set; }
         public string Text { get; set; }
 
-        public virtual ICollection<UserConversation> Messages { get; set; }
-        public Message()
-        {
-            Messages = new HashSet<UserConversation>();
-        }
+
+        public int UserId { get; set; }
+        public User User { get; set; }
+        
+        
+        
+        
+        
+        
+        
+        //public virtual ICollection<UserConversation> Users { get; set; }
+        //public Message()
+        //{
+        //    Users = new HashSet<UserConversation>();
+        //}
     }
 }
