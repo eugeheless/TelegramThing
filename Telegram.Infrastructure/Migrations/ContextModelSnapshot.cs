@@ -45,9 +45,6 @@ namespace Telegram.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ConversationId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("SendTime")
                         .HasColumnType("datetime");
 
@@ -55,9 +52,15 @@ namespace Telegram.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<int>("UserConversation1Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserConversationId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ConversationId");
+                    b.HasIndex("UserConversationId", "UserConversation1Id");
 
                     b.ToTable("Messages");
                 });
@@ -103,9 +106,9 @@ namespace Telegram.Infrastructure.Migrations
 
             modelBuilder.Entity("Telegram.Domain.Message", b =>
                 {
-                    b.HasOne("Telegram.Domain.Conversation", "Conversation")
+                    b.HasOne("Telegram.Domain.UserConversation", "UserConversation")
                         .WithMany("Messages")
-                        .HasForeignKey("ConversationId")
+                        .HasForeignKey("UserConversationId", "UserConversation1Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

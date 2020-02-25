@@ -12,6 +12,13 @@ namespace Telegram.Domain
         public Conversation Conversation { get; set; }
 
 
+        public virtual ICollection<Message> Messages { get; set; }
+        public UserConversation()
+        {
+            Messages = new HashSet<Message>();
+        }
+
+
 
     }
 }

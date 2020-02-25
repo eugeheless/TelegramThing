@@ -12,7 +12,7 @@ namespace Telegram.Infrastructure.Config
         public void Configure(EntityTypeBuilder<UserConversation> x)
         {
             x.HasKey(x => new { x.UserId, x.ConversId });
-            //x.HasAlternateKey(x => new { x.UserId, x.MessageId });
+            //x.HasAlternateKey(x => x.MessageId);
             //x.HasAlternateKey(x => new { x.ConversId, x.MessageId });
 
             x.HasOne(x => x.User)

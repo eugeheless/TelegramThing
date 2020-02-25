@@ -10,8 +10,8 @@ using Telegram.Infrastructure;
 namespace Telegram.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200225144449_123")]
-    partial class _123
+    [Migration("20200225155629_FinallyDone")]
+    partial class FinallyDone
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,12 +54,15 @@ namespace Telegram.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("UserConversation1Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserConversationId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserConversationId", "UserConversation1Id");
 
                     b.ToTable("Messages");
                 });
@@ -105,9 +108,9 @@ namespace Telegram.Infrastructure.Migrations
 
             modelBuilder.Entity("Telegram.Domain.Message", b =>
                 {
-                    b.HasOne("Telegram.Domain.User", "User")
+                    b.HasOne("Telegram.Domain.UserConversation", "UserConversation")
                         .WithMany("Messages")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserConversationId", "UserConversation1Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

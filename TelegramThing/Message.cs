@@ -11,8 +11,10 @@ namespace Telegram.Domain
         public string Text { get; set; }
 
 
-        public int ConversationId { get; set; }
-        public Conversation Conversation { get; set; }
+        public int UserConversationId { get; set; }
+        public int UserConversation1Id { get; set; }
+
+        public UserConversation UserConversation { get; set; }
         
         
         
